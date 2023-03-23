@@ -44,6 +44,7 @@
 		EB99A19829CC37B500DBBB6A /* ChecklistM1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChecklistM1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB99A19C29CC37B500DBBB6A /* ChecklistM1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistM1UITests.swift; sourceTree = "<group>"; };
 		EB99A19E29CC37B500DBBB6A /* ChecklistM1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistM1UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EB99A1AD29CC458700DBBB6A /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +99,7 @@
 				EB99A18329CC37B300DBBB6A /* ContentView.swift */,
 				EB99A18529CC37B400DBBB6A /* Assets.xcassets */,
 				EB99A18729CC37B400DBBB6A /* Preview Content */,
+				EB99A1AD29CC458700DBBB6A /* readme.md */,
 			);
 			path = ChecklistM1;
 			sourceTree = "<group>";
