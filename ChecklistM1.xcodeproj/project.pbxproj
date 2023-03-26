@@ -95,11 +95,11 @@
 		EB99A18029CC37B300DBBB6A /* ChecklistM1 */ = {
 			isa = PBXGroup;
 			children = (
+				EB99A1AD29CC458700DBBB6A /* readme.md */,
 				EB99A18129CC37B300DBBB6A /* ChecklistM1App.swift */,
 				EB99A18329CC37B300DBBB6A /* ContentView.swift */,
 				EB99A18529CC37B400DBBB6A /* Assets.xcassets */,
 				EB99A18729CC37B400DBBB6A /* Preview Content */,
-				EB99A1AD29CC458700DBBB6A /* readme.md */,
 			);
 			path = ChecklistM1;
 			sourceTree = "<group>";
