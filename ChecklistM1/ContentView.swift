@@ -21,7 +21,13 @@ struct ContentView: View {
                         Spacer()
                         Image(systemName: task.status)
                     }
-                }.onDelete { idx in }
+                }.onDelete { idx in
+                    model.tasks.remove(atOffsets: idx)
+                    model.save()
+                }.onMove { idx, i in
+                    model.tasks.move(fromOffsets: idx, toOffset: i)
+                    model.save()
+                }
                 //                ForEach(tasks, id:\.self){
                 //                    task in
                 //                    listView(item: task)
@@ -31,6 +37,7 @@ struct ContentView: View {
                 .navigationBarItems(leading: EditButton(),
                                     trailing: Button("+"){
                     model.tasks.append(AppData(item:"New Task", status: "checkmark.circle.fill"))
+                    model.save()
                 })
         }
         .padding()
