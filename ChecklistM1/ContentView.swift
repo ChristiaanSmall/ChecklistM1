@@ -9,36 +9,39 @@ import SwiftUI
 var tasks = [["Do workshop", "checkmark.circle.fill"], ["Workout Arms", "xmark.circle.fill"], ["Buy Food", "xmark.circle.fill"], ["Feed Dogs", "checkmark.circle.fill"]]
 struct ContentView: View {
     @Binding var model: DataModel
+    @State var myTitle = "My List"
     var body: some View {
 
-        NavigationView() {
-            
-            List {
-                ForEach(model.tasks, id: \.self) {
-                    task in
-                    HStack{
-                        Text(task.item)
-                        Spacer()
-                        Image(systemName: task.status)
+            NavigationView() {
+                VStack {
+                EditView(title: $myTitle )
+                List {
+                    ForEach(model.tasks, id: \.self) {
+                        task in
+                        HStack{
+                            Text(task.item)
+                            Spacer()
+                            Image(systemName: task.status)
+                        }
+                    }.onDelete { idx in
+                        model.tasks.remove(atOffsets: idx)
+                        model.save()
+                    }.onMove { idx, i in
+                        model.tasks.move(fromOffsets: idx, toOffset: i)
+                        model.save()
                     }
-                }.onDelete { idx in
-                    model.tasks.remove(atOffsets: idx)
-                    model.save()
-                }.onMove { idx, i in
-                    model.tasks.move(fromOffsets: idx, toOffset: i)
-                    model.save()
-                }
-                //                ForEach(tasks, id:\.self){
-                //                    task in
-                //                    listView(item: task)
-                //                }
-                
-            }.navigationTitle("Work List:")
-                .navigationBarItems(leading: EditButton(),
-                                    trailing: Button("+"){
-                    model.tasks.append(AppData(item:"New Task", status: "checkmark.circle.fill"))
-                    model.save()
-                })
+                    //                ForEach(tasks, id:\.self){
+                    //                    task in
+                    //                    listView(item: task)
+                    //                }
+                    
+                }.navigationTitle(myTitle)
+                    .navigationBarItems(leading: EditButton(),
+                                        trailing: Button("+"){
+                        model.tasks.append(AppData(item:"New Task", status: "checkmark.circle.fill"))
+                        model.save()
+                    })
+            }
         }
         .padding()
     }
