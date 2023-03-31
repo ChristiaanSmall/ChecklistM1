@@ -8,24 +8,42 @@
 import SwiftUI
 var tasks = [["Do workshop", "checkmark.circle.fill"], ["Workout Arms", "xmark.circle.fill"], ["Buy Food", "xmark.circle.fill"], ["Feed Dogs", "checkmark.circle.fill"]]
 struct ContentView: View {
+    @Binding var model: DataModel
     var body: some View {
+
         NavigationView() {
+            
             List {
-                ForEach(tasks, id:\.self){
+                ForEach(model.tasks, id: \.self) {
                     task in
-                    listView(item: task)
+                    HStack{
+                        Text(task.item)
+                        Spacer()
+                        Image(systemName: task.status)
+                    }
                 }
+                //                ForEach(tasks, id:\.self){
+                //                    task in
+                //                    listView(item: task)
+                //                }
+                
             }.navigationTitle("Work List:")
+                .navigationBarItems(leading: EditButton(),
+                                    trailing: Button("+"){
+                    model.tasks.append(AppData(item:"New Task", status: "checkmark.circle.fill"))
+                })
         }
         .padding()
     }
+    
+    
 }
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
 
 struct listView: View {
     var item:[String]

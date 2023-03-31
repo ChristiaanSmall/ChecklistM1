@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct ChecklistM1App: App {
+    @State var model:DataModel = DataModel(tasks: fakeData)
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(model: $model)
             
         }
     }
