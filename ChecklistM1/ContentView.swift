@@ -21,7 +21,7 @@ struct ContentView: View {
                         Spacer()
                         Image(systemName: task.status)
                     }
-                }
+                }.onDelete { idx in }
                 //                ForEach(tasks, id:\.self){
                 //                    task in
                 //                    listView(item: task)
