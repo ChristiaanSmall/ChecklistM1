@@ -16,12 +16,15 @@ struct ContentView: View {
                 VStack {
                 EditView(title: $myTitle )
                 List {
-                    ForEach(model.tasks, id: \.self) {
-                        task in
+                    ForEach($model.tasks, id: \.self) {
+                        $task in
                         HStack{
-                            Text(task.item)
+                            Text(task.list)
+
                             Spacer()
-                            Image(systemName: task.status)
+                            //Text(task.listDet[0])
+
+                            //Image(systemName: task.status)
                         }
                     }.onDelete { idx in
                         model.tasks.remove(atOffsets: idx)
@@ -38,7 +41,7 @@ struct ContentView: View {
                 }.navigationTitle(myTitle)
                     .navigationBarItems(leading: EditButton(),
                                         trailing: Button("+"){
-                        model.tasks.append(AppData(item:"New Task", status: "checkmark.circle.fill"))
+                        model.tasks.append(AppData(list: "To Do",listDet: [["Do homework", "checkmark.circle.fill"]]))
                         model.save()
                     })
             }

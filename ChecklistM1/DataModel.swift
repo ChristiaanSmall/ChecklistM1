@@ -7,24 +7,22 @@
 
 import Foundation
 
-struct AppData: Hashable, Codable{
+struct AppData: Hashable, Codable {
+    var list: String
+    var listDet: [[String]]
+}
+
+struct listData: Hashable, Codable {
     var item: String
     var status: String
 }
-func getFile() -> URL? {
-    let filename = "mytasks.json"
-    let fm = FileManager.default
-    guard let url = fm.urls(for: .documentDirectory, in:
-        FileManager.SearchPathDomainMask.userDomainMask)
-        .first else {
-        return nil
-    }
-    return url.appendingPathComponent(filename)
-}
+
 struct DataModel: Codable {
-    var tasks:[AppData]
-    init () {
+    var tasks: [AppData]
+    var lists: [listData]
+    init() {
         tasks = []
+        lists = []
         load()
     }
     
@@ -32,12 +30,17 @@ struct DataModel: Codable {
         guard let url = getFile(),
               let data = try? Data(contentsOf: url),
               let datamodel = try? JSONDecoder().decode(DataModel.self, from: data)
-            else {
-                self.tasks = fakeData
-                return
+        else {
+            self.tasks = fakeData
+            self.lists = fakeLData
+
+            return
         }
         self.tasks = datamodel.tasks
+        self.lists = datamodel.lists
+
     }
+    
     func save() {
         guard let url = getFile(),
               let data = try? JSONEncoder().encode(self)
@@ -48,7 +51,23 @@ struct DataModel: Codable {
     }
 }
 
+func getFile() -> URL? {
+    let filename = "mytasks.json"
+    let fm = FileManager.default
+    guard let url = fm.urls(for: .documentDirectory, in: .userDomainMask).first else {
+        return nil
+    }
+    return url.appendingPathComponent(filename)
+}
+
+var fakeLData = [
+    listData(item: "Do homework", status: "checkmark.circle.fill"),
+    listData(item: "Do laundry", status: "checkmark.circle.fill")
+]
+
 var fakeData = [
-    AppData(item: "Do homework", status: "checkmark.circle.fill"),
-    AppData(item: "Do Not do homework", status: "checkmark.circle.fill")
-    ]
+    AppData(list: "To Do", listDet: [[]]),
+    AppData(list: "Done", listDet: [[]])
+]
+
+
