@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-var tasks = [["Do workshop", "checkmark.circle.fill"], ["Workout Arms", "xmark.circle.fill"], ["Buy Food", "xmark.circle.fill"], ["Feed Dogs", "checkmark.circle.fill"]]
 struct ContentView: View {
     @Binding var model: DataModel
     @State var myTitle = "My List"
@@ -18,14 +17,15 @@ struct ContentView: View {
                 List {
                     ForEach($model.tasks, id: \.self) {
                         $task in
-                        HStack{
+
+                        NavigationLink(destination: ItemView(list: $task)) {
                             Text(task.list)
-
-                            Spacer()
-                            //Text(task.listDet[0])
-
-                            //Image(systemName: task.status)
                         }
+                        
+                        //Text(task.list)
+
+                        Spacer()
+                        
                     }.onDelete { idx in
                         model.tasks.remove(atOffsets: idx)
                         model.save()
@@ -41,7 +41,7 @@ struct ContentView: View {
                 }.navigationTitle(myTitle)
                     .navigationBarItems(leading: EditButton(),
                                         trailing: Button("+"){
-                        model.tasks.append(AppData(list: "To Do",listDet: [["Do homework", "checkmark.circle.fill"]]))
+                        model.tasks.append(AppData(list: "To Do",listDet: [["Empty List", "checkmark.circle.fill"]]))
                         model.save()
                     })
             }

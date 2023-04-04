@@ -66,8 +66,8 @@ var fakeLData = [
 ]
 
 var fakeData = [
-    AppData(list: "To Do", listDet: [[]]),
-    AppData(list: "Done", listDet: [[]])
+    AppData(list: "To Do", listDet: [["Do Work", "status lol"],["Do234 Work", "status234 lol"]]),
+    AppData(list: "Done", listDet: [["Do Work", "status lol"]])
 ]
 
 
