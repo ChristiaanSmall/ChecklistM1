@@ -24,7 +24,7 @@ struct ContentView: View {
                         
                         //Text(task.list)
 
-                        Spacer()
+                       // Spacer()
                         
                     }.onDelete { idx in
                         model.tasks.remove(atOffsets: idx)
@@ -41,7 +41,7 @@ struct ContentView: View {
                 }.navigationTitle(myTitle)
                     .navigationBarItems(leading: EditButton(),
                                         trailing: Button("+"){
-                        model.tasks.append(AppData(list: "To Do",listDet: [["Empty List", "checkmark.circle.fill"]]))
+                        model.tasks.append(AppData(list: "New",listDet: [["Empty List", "checkmark.circle.fill"]]))
                         model.save()
                     })
             }

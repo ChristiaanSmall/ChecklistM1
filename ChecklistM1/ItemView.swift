@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ItemView: View {
     @Binding var list: AppData
-    @AppStorage("checklist_data") var checklistData: Data?
 
     @State var listName: String = ""
     @State var newItem: String = ""
@@ -19,10 +18,15 @@ struct ItemView: View {
     var body: some View {
         VStack {
             EditView(title: $listName)
-
             List {
                 ForEach($tempListDet, id: \.self) { $item in
-                    Text(item[0])
+                    HStack{
+                        Text(item[0])
+                        Spacer()
+                        Image(systemName: item[1])
+                    }
+
+
                 }
                 .onDelete { idx in
                     tempListDet.remove(atOffsets: idx)
@@ -34,7 +38,7 @@ struct ItemView: View {
             HStack {
                 TextField("Add item", text: $newItem)
                 Button(action: {
-                    tempListDet.append([newItem])
+                    tempListDet.append([newItem, "xmark.circle.fill"])
                     newItem = ""
                 }) {
                     Text("Add")
@@ -54,7 +58,6 @@ struct ItemView: View {
                     Button(action: {
                         list.listDet = tempListDet
                         originalListDet = tempListDet
-                        saveData()
                     }) {
                         Text("Save")
                     }
@@ -65,33 +68,10 @@ struct ItemView: View {
             listName = list.list
             originalListDet = list.listDet
             tempListDet = list.listDet
-            loadData()
         }
         .onDisappear {
             list.list = listName
         }
     }
-
-    func saveData() {
-        do {
-            let encoder = JSONEncoder()
-            let data = try encoder.encode(list)
-            checklistData = data
-        } catch {
-            print("Error encoding checklist data: \(error.localizedDescription)")
-        }
-    }
-
-    func loadData() {
-        guard let data = checklistData else { return }
-        do {
-            let decoder = JSONDecoder()
-            let decodedData = try decoder.decode(AppData.self, from: data)
-            list = decodedData
-            originalListDet = decodedData.listDet
-            tempListDet = decodedData.listDet
-        } catch {
-            print("Error decoding checklist data: \(error.localizedDescription)")
-        }
-    }
 }
+

@@ -12,17 +12,12 @@ struct AppData: Hashable, Codable {
     var listDet: [[String]]
 }
 
-struct listData: Hashable, Codable {
-    var item: String
-    var status: String
-}
+
 
 struct DataModel: Codable {
     var tasks: [AppData]
-    var lists: [listData]
     init() {
         tasks = []
-        lists = []
         load()
     }
     
@@ -32,12 +27,9 @@ struct DataModel: Codable {
               let datamodel = try? JSONDecoder().decode(DataModel.self, from: data)
         else {
             self.tasks = fakeData
-            self.lists = fakeLData
-
             return
         }
         self.tasks = datamodel.tasks
-        self.lists = datamodel.lists
 
     }
     
@@ -60,14 +52,10 @@ func getFile() -> URL? {
     return url.appendingPathComponent(filename)
 }
 
-var fakeLData = [
-    listData(item: "Do homework", status: "checkmark.circle.fill"),
-    listData(item: "Do laundry", status: "checkmark.circle.fill")
-]
 
 var fakeData = [
-    AppData(list: "To Do", listDet: [["Do Work", "status lol"],["Do234 Work", "status234 lol"]]),
-    AppData(list: "Done", listDet: [["Do Work", "status lol"]])
+    AppData(list: "To Do", listDet: [["Do Work", "xmark.circle.fill"],["Do234 Work", "checkmark.circle.fill"]]),
+    AppData(list: "Done", listDet: [["Do Work", "xmark.circle.fill"]])
 ]
 
 
