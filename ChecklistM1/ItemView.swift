@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ItemView: View {
-    @Binding var list: AppData
+    @Binding var list: DataModel
+    var count: Int
 
     @State var listName: String = ""
     @State var newItem: String = ""
@@ -17,31 +18,42 @@ struct ItemView: View {
 
     var body: some View {
         VStack {
-            EditView(title: $listName)
             List {
                 ForEach($tempListDet, id: \.self) { $item in
                     HStack{
+                        //Adds text items
                         Text(item[0])
                         Spacer()
                         Image(systemName: item[1])
                     }
-
-
+                    .onTapGesture {
+                        // Toggle the checked state of the item when tapped
+                        if item[1] == "checkmark.circle.fill" {
+                            item[1] = "circle"
+                        } else {
+                            item[1] = "checkmark.circle.fill"
+                        }
+                    }
                 }
                 .onDelete { idx in
+                    // Delete item at specified index from tempListDet
                     tempListDet.remove(atOffsets: idx)
                 }
                 .onMove { idx, i in
+                    // Move item from one index to another in tempListDet
                     tempListDet.move(fromOffsets: idx, toOffset: i)
                 }
-            }
-            HStack {
-                TextField("Add item", text: $newItem)
-                Button(action: {
-                    tempListDet.append([newItem, "xmark.circle.fill"])
-                    newItem = ""
-                }) {
-                    Text("Add")
+                
+                HStack {
+                    // TextField for adding a new item
+                    TextField("Add item", text: $newItem)
+                    Button(action: {
+                        // Append new item to tempListDet when Add button is tapped
+                        tempListDet.append([newItem, "circle"])
+                        newItem = ""
+                    }) {
+                        Text("Add")
+                    }
                 }
             }
         }
@@ -49,6 +61,7 @@ struct ItemView: View {
         .navigationBarItems(
             leading:
                 Button(action: {
+                    // Reset tempListDet to originalListDet when Reset button is tapped
                     tempListDet = originalListDet
                 }) {
                     Text("Reset")
@@ -56,8 +69,10 @@ struct ItemView: View {
             trailing:
                 HStack {
                     Button(action: {
-                        list.listDet = tempListDet
+                        // Update list tasks with changes in tempListDet and save to DataModel
+                        list.tasks[count].listDet = tempListDet
                         originalListDet = tempListDet
+                        list.save()
                     }) {
                         Text("Save")
                     }
@@ -65,13 +80,14 @@ struct ItemView: View {
                 }
         )
         .onAppear {
-            listName = list.list
-            originalListDet = list.listDet
-            tempListDet = list.listDet
+            // Update listName, originalListDet, and tempListDet when view appears
+            listName = list.tasks[count].list
+            originalListDet = list.tasks[count].listDet
+            tempListDet = list.tasks[count].listDet
         }
         .onDisappear {
-            list.list = listName
+            // Update listName when view disappears
+            list.tasks[count].list = listName
         }
     }
 }
-

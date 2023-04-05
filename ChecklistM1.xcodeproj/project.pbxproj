@@ -103,8 +103,8 @@
 			children = (
 				EB99A1AD29CC458700DBBB6A /* readme.md */,
 				EB99A18129CC37B300DBBB6A /* ChecklistM1App.swift */,
-				EB99A18329CC37B300DBBB6A /* ContentView.swift */,
 				EB0451F529D6A7C80058C7C4 /* DataModel.swift */,
+				EB99A18329CC37B300DBBB6A /* ContentView.swift */,
 				EB0451FB29D6C2000058C7C4 /* EditView.swift */,
 				EB42119329DC48FE008470CB /* ItemView.swift */,
 				EB99A18529CC37B400DBBB6A /* Assets.xcassets */,

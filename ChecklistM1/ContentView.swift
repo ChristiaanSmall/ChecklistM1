@@ -8,17 +8,16 @@
 import SwiftUI
 struct ContentView: View {
     @Binding var model: DataModel
-    @State var myTitle = "My List"
+    @State var myTitle = "MyList"
+    var abc = 0
     var body: some View {
 
             NavigationView() {
                 VStack {
-                EditView(title: $myTitle )
+                    EditView(title: $myTitle)
                 List {
-                    ForEach($model.tasks, id: \.self) {
-                        $task in
-
-                        NavigationLink(destination: ItemView(list: $task)) {
+                    ForEach(model.tasks.enumerated().map { $0 }, id: \.element) { (index, task) in
+                        NavigationLink(destination: ItemView(list: $model, count: index)) {
                             Text(task.list)
                         }
                         
@@ -39,9 +38,8 @@ struct ContentView: View {
                     //                }
                     
                 }.navigationTitle(myTitle)
-                    .navigationBarItems(leading: EditButton(),
-                                        trailing: Button("+"){
-                        model.tasks.append(AppData(list: "New",listDet: [["Empty List", "checkmark.circle.fill"]]))
+                    .navigationBarItems(trailing: Button("+"){
+                        model.tasks.append(AppData(list: "New",listDet: [["Empty List", "circle"]]))
                         model.save()
                     })
             }
