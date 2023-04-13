@@ -38,7 +38,7 @@ struct ContentView: View {
                     //                }
                     
                 }.navigationTitle(myTitle)
-                    .navigationBarItems(trailing: Button("+"){
+                        .navigationBarItems(leading: EditButton(), trailing: Button("+"){
                         model.tasks.append(AppData(list: "New",listDet: [["Empty List", "circle"]]))
                         model.save()
                     })

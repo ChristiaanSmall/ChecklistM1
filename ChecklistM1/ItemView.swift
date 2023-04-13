@@ -15,6 +15,7 @@ struct ItemView: View {
     @State var newItem: String = ""
     @State var originalListDet: [[String]] = []
     @State var tempListDet: [[String]] = []
+    @State var isReset: Bool = false // added state to track reset button state
 
     var body: some View {
         VStack {
@@ -62,9 +63,16 @@ struct ItemView: View {
             leading:
                 Button(action: {
                     // Reset tempListDet to originalListDet when Reset button is tapped
-                    tempListDet = originalListDet
+                    if isReset {
+                        tempListDet = originalListDet
+                        isReset.toggle()
+                    } else {
+                        originalListDet = tempListDet
+                        tempListDet = tempListDet.map{ [$0[0], "circle"] } // reset all items to circle
+                        isReset.toggle()
+                    }
                 }) {
-                    Text("Reset")
+                    Text(isReset ? "Go back" : "Reset") // toggle button text based on state
                 },
             trailing:
                 HStack {
