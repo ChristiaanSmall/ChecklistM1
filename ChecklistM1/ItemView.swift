@@ -19,6 +19,7 @@ struct ItemView: View {
 
     var body: some View {
         VStack {
+            EditView(title: $listName)
             List {
                 ForEach($tempListDet, id: \.self) { $item in
                     HStack{
