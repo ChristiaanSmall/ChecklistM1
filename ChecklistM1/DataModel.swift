@@ -7,15 +7,16 @@
 
 import Foundation
 
-// Define a struct `AppData` to represent the data for each list item
-// It conforms to Hashable and Codable protocols for encoding and decoding
+/// Define a struct `AppData` to represent the data for each list item
+/// It conforms to Hashable and Codable protocols for encoding and decoding
 struct AppData: Hashable, Codable {
     var list: String
     var listDet: [[String]]
 }
 
-// Define the main data model struct `DataModel` for the app
-// It conforms to Codable protocol for encoding and decoding
+/// DataModel is a class that conforms to the ObservableObject protocol. It holds an array of AppData objects and provides methods for adding, deleting, and updating these objects. It also includes a method to load the data from a JSON file and save the data to the same file when changes are made.
+/// Define the main data model struct `DataModel` for the app
+/// It conforms to Codable protocol for encoding and decoding
 struct DataModel: Codable {
     var tasks: [AppData] // Array to hold the list of tasks
     init() {
@@ -23,7 +24,7 @@ struct DataModel: Codable {
         load() // Load data from file on initialization
     }
     
-    // Load data from file, or use fakeData if file is not found or cannot be decoded
+    /// Load data from file, or use fakeData if file is not found or cannot be decoded
     mutating func load() {
         guard let url = getFile(),
               let data = try? Data(contentsOf: url),
@@ -35,7 +36,7 @@ struct DataModel: Codable {
         self.tasks = datamodel.tasks
     }
     
-    // Save the current data model to file
+    /// Save the current data model to file
     func save() {
         guard let url = getFile(),
               let data = try? JSONEncoder().encode(self)
@@ -46,7 +47,7 @@ struct DataModel: Codable {
     }
 }
 
-// Helper function to get the file URL for storing data
+/// Helper function to get the file URL for storing data
 func getFile() -> URL? {
     let filename = "mytasks.json"
     let fm = FileManager.default
@@ -56,7 +57,7 @@ func getFile() -> URL? {
     return url.appendingPathComponent(filename)
 }
 
-// Define some fake data for initial testing or fallback
+/// Define some fake data for initial testing or fallback
 var fakeData = [
     AppData(list: "To Do", listDet: [["Do Work", "circle"],["Do Nothing", "checkmark.circle.fill"]]),
     AppData(list: "Cool List", listDet: [["Do Work", "circle"]])

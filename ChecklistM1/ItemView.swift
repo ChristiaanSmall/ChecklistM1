@@ -6,20 +6,28 @@
 //
 
 import SwiftUI
-
+/// ItemView is a SwiftUI view that allows the user to edit a list of items. It includes an EditView to display and edit the list's title, and a List that displays each item as a text and a checkmark circle. When an item is tapped, the checked state of the item is toggled. The user can delete or reorder items in the List, and add new items using a TextField and an Add button.
 struct ItemView: View {
+    /// The data model containing the list being edited
     @Binding var list: DataModel
+    /// The index of the list being edited in the data model
     var count: Int
 
+    /// The name of the list being edited
     @State var listName: String = ""
+    /// The name of the new item being added to the list
     @State var newItem: String = ""
+    /// The original list details before any changes were made
     @State var originalListDet: [[String]] = []
+    /// The current list details being edited
     @State var tempListDet: [[String]] = []
-    @State var isReset: Bool = false // added state to track reset button state
+    /// The state of the reset button (true if reset has been applied, false otherwise)
+    @State var isReset: Bool = false
 
     var body: some View {
         VStack {
             EditView(title: $listName)
+
             List {
                 ForEach($tempListDet, id: \.self) { $item in
                     HStack{
@@ -45,7 +53,7 @@ struct ItemView: View {
                     // Move item from one index to another in tempListDet
                     tempListDet.move(fromOffsets: idx, toOffset: i)
                 }
-                
+
                 HStack {
                     // TextField for adding a new item
                     TextField("Add item", text: $newItem)

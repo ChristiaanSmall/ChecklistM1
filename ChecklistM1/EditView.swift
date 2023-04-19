@@ -6,28 +6,36 @@
 //
 
 import SwiftUI
-
+/// EditView is a view that allows the user to edit the title of the list. It includes a TextField for the user to input the new title and a Cancel button to revert changes. When the user updates the title, the new value is saved to the DataModel.
 struct EditView: View {
-    @Binding var title: String // Binding for the title property
-    @State var displayItem: String = "" // State property for the displayItem
+    /// Binding for the title property
+    @Binding var title: String
+    
+    /// State property for the displayItem
+    @State var displayItem: String = ""
 
-    @Environment(\.editMode) var editMode // Environment property for the editMode
+    /// Environment property for the editMode
+    @Environment(\.editMode) var editMode
 
     var body: some View {
         VStack {
-            if(editMode?.wrappedValue == .active) { // Show the editable view only when editMode is active
+            if(editMode?.wrappedValue == .active) {
+                // Show the editable view only when editMode is active
                 HStack {
                     Image(systemName: "square.and.pencil") // Pencil icon
                     TextField("Input:", text: $displayItem) // TextField for input
-                    Button("Cancel") { // Cancel button to revert changes
+                    Button("Cancel") {
+                        // Cancel button to revert changes
                         displayItem = title
                     }
                 }
                 .onAppear {
-                    displayItem = title // Initialize displayItem with the current title when the view appears
+                    // Initialize displayItem with the current title when the view appears
+                    displayItem = title
                 }
                 .onDisappear {
-                    title = displayItem // Update the title with the edited displayItem when the view disappears
+                    // Update the title with the edited displayItem when the view disappears
+                    title = displayItem
                 }
             }
         }
