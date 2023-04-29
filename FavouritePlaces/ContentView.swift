@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// ContentView is a  view that displays a list of items. It includes a navigation view that shows the title of the list, an EditView view to display and edit the title, and a List that displays each item as a NavigationLink to a detailed view of the item. The navigationBarItems modifier includes the EditButton and a Button to add new items. The List includes two modifiers: onDelete and onMove that enable the user to delete or reorder items. When the user taps the add button, a new AppData object is created and added to the DataModel, which is then saved.
+
 struct ContentView: View {
     
     /// A binding to a data model that holds the list of tasks.

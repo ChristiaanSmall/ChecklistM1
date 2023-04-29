@@ -8,7 +8,6 @@
 import Foundation
 
 /// Define a struct `AppData` to represent the data for each list item
-/// It conforms to Hashable and Codable protocols for encoding and decoding
 struct AppData: Hashable, Codable {
     var list: String
     var url: String
@@ -17,9 +16,6 @@ struct AppData: Hashable, Codable {
     var latitude: String
 }
 
-/// DataModel is a class that conforms to the ObservableObject protocol. It holds an array of AppData objects and provides methods for adding, deleting, and updating these objects. It also includes a method to load the data from a JSON file and save the data to the same file when changes are made.
-/// Define the main data model struct `DataModel` for the app
-/// It conforms to Codable protocol for encoding and decoding
 struct DataModel: Codable {
     var tasks: [AppData] // Array to hold the list of tasks
     init() {
