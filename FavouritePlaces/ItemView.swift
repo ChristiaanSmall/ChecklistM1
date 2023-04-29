@@ -48,11 +48,11 @@ struct ItemView: View {
         .navigationBarItems(
             trailing:
                 HStack {
-                    Button(action: {
-                        list.save()
-                    }) {
-                        Text("Save")
-                    }
+//                    Button(action: {
+//                        list.save()
+//                    }) {
+//                        Text("Save")
+//                    }
                     EditButton()
                 }
         )
@@ -71,7 +71,7 @@ struct ItemView: View {
             list.tasks[count].description = description
             list.tasks[count].longitude = longitude
             list.tasks[count].latitude = latitude
-
+            list.save()
         }
     }
 }
