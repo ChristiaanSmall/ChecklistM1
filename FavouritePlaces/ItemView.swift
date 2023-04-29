@@ -65,7 +65,7 @@ struct ItemView: View {
             latitude = list.tasks[count].latitude
         }
         .onDisappear {
-            // Update listName when view disappears
+            // Update listName when view disappear
             list.tasks[count].list = listName
             list.tasks[count].url = url
             list.tasks[count].description = description
