@@ -31,6 +31,12 @@ struct ContentView: View {
                         
                         // Add a NavigationLink for each task in the list.
                         NavigationLink(destination: ItemView(list: $model, count: index)) {
+                            if let imageUrl = URL(string: model.tasks[index].url), let imageData = try? Data(contentsOf: imageUrl), let uiImage = UIImage(data: imageData) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 40, height: 40)
+                            }
                             Text(model.tasks[index].list)
                         }
                     }
@@ -51,7 +57,7 @@ struct ContentView: View {
                     
                     // Add a button to create a new task in the list.
                     trailing: Button("+"){
-                        model.tasks.append(AppData(list: "New",listDet: [["Empty List", "circle"]]))
+                        model.tasks.append(AppData(list: "Siq List", url: "", description: "bruh", longitude: "0", latitude: "0"))
                         model.save()
                     }
                 )

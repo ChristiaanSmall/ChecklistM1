@@ -10,13 +10,13 @@
 		EB0451F629D6A7C80058C7C4 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0451F529D6A7C80058C7C4 /* DataModel.swift */; };
 		EB0451FC29D6C2000058C7C4 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0451FB29D6C2000058C7C4 /* EditView.swift */; };
 		EB42119429DC48FE008470CB /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42119329DC48FE008470CB /* ItemView.swift */; };
-		EB99A18229CC37B300DBBB6A /* ChecklistM1App.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99A18129CC37B300DBBB6A /* ChecklistM1App.swift */; };
+		EB99A18229CC37B300DBBB6A /* FavouritePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99A18129CC37B300DBBB6A /* FavouritePlaces.swift */; };
 		EB99A18429CC37B300DBBB6A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99A18329CC37B300DBBB6A /* ContentView.swift */; };
 		EB99A18629CC37B400DBBB6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB99A18529CC37B400DBBB6A /* Assets.xcassets */; };
 		EB99A18929CC37B400DBBB6A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB99A18829CC37B400DBBB6A /* Preview Assets.xcassets */; };
-		EB99A19329CC37B500DBBB6A /* ChecklistM1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99A19229CC37B500DBBB6A /* ChecklistM1Tests.swift */; };
-		EB99A19D29CC37B500DBBB6A /* ChecklistM1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99A19C29CC37B500DBBB6A /* ChecklistM1UITests.swift */; };
-		EB99A19F29CC37B500DBBB6A /* ChecklistM1UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99A19E29CC37B500DBBB6A /* ChecklistM1UITestsLaunchTests.swift */; };
+		EB99A19329CC37B500DBBB6A /* FavouritePlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99A19229CC37B500DBBB6A /* FavouritePlacesTests.swift */; };
+		EB99A19D29CC37B500DBBB6A /* FavouritePlacesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99A19C29CC37B500DBBB6A /* FavouritePlacesTests.swift */; };
+		EB99A19F29CC37B500DBBB6A /* FavouritePlacesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB99A19E29CC37B500DBBB6A /* FavouritePlacesUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,16 +40,16 @@
 		EB0451F529D6A7C80058C7C4 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		EB0451FB29D6C2000058C7C4 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		EB42119329DC48FE008470CB /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
-		EB99A17E29CC37B300DBBB6A /* ChecklistM1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChecklistM1.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB99A18129CC37B300DBBB6A /* ChecklistM1App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistM1App.swift; sourceTree = "<group>"; };
+		EB99A17E29CC37B300DBBB6A /* FavouritePlaces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FavouritePlaces.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB99A18129CC37B300DBBB6A /* FavouritePlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlaces.swift; sourceTree = "<group>"; };
 		EB99A18329CC37B300DBBB6A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EB99A18529CC37B400DBBB6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EB99A18829CC37B400DBBB6A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		EB99A18E29CC37B500DBBB6A /* ChecklistM1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChecklistM1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB99A19229CC37B500DBBB6A /* ChecklistM1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistM1Tests.swift; sourceTree = "<group>"; };
-		EB99A19829CC37B500DBBB6A /* ChecklistM1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChecklistM1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EB99A19C29CC37B500DBBB6A /* ChecklistM1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistM1UITests.swift; sourceTree = "<group>"; };
-		EB99A19E29CC37B500DBBB6A /* ChecklistM1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistM1UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		EB99A18E29CC37B500DBBB6A /* FavouritePlacesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FavouritePlacesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB99A19229CC37B500DBBB6A /* FavouritePlacesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesTests.swift; sourceTree = "<group>"; };
+		EB99A19829CC37B500DBBB6A /* FavouritePlacesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FavouritePlacesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EB99A19C29CC37B500DBBB6A /* FavouritePlacesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesTests.swift; sourceTree = "<group>"; };
+		EB99A19E29CC37B500DBBB6A /* FavouritePlacesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritePlacesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		EB99A1AD29CC458700DBBB6A /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,9 +81,9 @@
 		EB99A17529CC37B300DBBB6A = {
 			isa = PBXGroup;
 			children = (
-				EB99A18029CC37B300DBBB6A /* ChecklistM1 */,
-				EB99A19129CC37B500DBBB6A /* ChecklistM1Tests */,
-				EB99A19B29CC37B500DBBB6A /* ChecklistM1UITests */,
+				EB99A18029CC37B300DBBB6A /* FavouritePlaces */,
+				EB99A19129CC37B500DBBB6A /* FavouritePlacesTests */,
+				EB99A19B29CC37B500DBBB6A /* FavouritePlacesUITests */,
 				EB99A17F29CC37B300DBBB6A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -91,18 +91,18 @@
 		EB99A17F29CC37B300DBBB6A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EB99A17E29CC37B300DBBB6A /* ChecklistM1.app */,
-				EB99A18E29CC37B500DBBB6A /* ChecklistM1Tests.xctest */,
-				EB99A19829CC37B500DBBB6A /* ChecklistM1UITests.xctest */,
+				EB99A17E29CC37B300DBBB6A /* FavouritePlaces.app */,
+				EB99A18E29CC37B500DBBB6A /* FavouritePlacesTests.xctest */,
+				EB99A19829CC37B500DBBB6A /* FavouritePlacesUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EB99A18029CC37B300DBBB6A /* ChecklistM1 */ = {
+		EB99A18029CC37B300DBBB6A /* FavouritePlaces */ = {
 			isa = PBXGroup;
 			children = (
 				EB99A1AD29CC458700DBBB6A /* readme.md */,
-				EB99A18129CC37B300DBBB6A /* ChecklistM1App.swift */,
+				EB99A18129CC37B300DBBB6A /* FavouritePlaces.swift */,
 				EB0451F529D6A7C80058C7C4 /* DataModel.swift */,
 				EB99A18329CC37B300DBBB6A /* ContentView.swift */,
 				EB0451FB29D6C2000058C7C4 /* EditView.swift */,
@@ -110,7 +110,7 @@
 				EB99A18529CC37B400DBBB6A /* Assets.xcassets */,
 				EB99A18729CC37B400DBBB6A /* Preview Content */,
 			);
-			path = ChecklistM1;
+			path = FavouritePlaces;
 			sourceTree = "<group>";
 		};
 		EB99A18729CC37B400DBBB6A /* Preview Content */ = {
@@ -121,29 +121,29 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		EB99A19129CC37B500DBBB6A /* ChecklistM1Tests */ = {
+		EB99A19129CC37B500DBBB6A /* FavouritePlacesTests */ = {
 			isa = PBXGroup;
 			children = (
-				EB99A19229CC37B500DBBB6A /* ChecklistM1Tests.swift */,
+				EB99A19229CC37B500DBBB6A /* FavouritePlacesTests.swift */,
 			);
-			path = ChecklistM1Tests;
+			path = FavouritePlacesTests;
 			sourceTree = "<group>";
 		};
-		EB99A19B29CC37B500DBBB6A /* ChecklistM1UITests */ = {
+		EB99A19B29CC37B500DBBB6A /* FavouritePlacesUITests */ = {
 			isa = PBXGroup;
 			children = (
-				EB99A19C29CC37B500DBBB6A /* ChecklistM1UITests.swift */,
-				EB99A19E29CC37B500DBBB6A /* ChecklistM1UITestsLaunchTests.swift */,
+				EB99A19C29CC37B500DBBB6A /* FavouritePlacesTests.swift */,
+				EB99A19E29CC37B500DBBB6A /* FavouritePlacesUITestsLaunchTests.swift */,
 			);
-			path = ChecklistM1UITests;
+			path = FavouritePlacesUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EB99A17D29CC37B300DBBB6A /* ChecklistM1 */ = {
+		EB99A17D29CC37B300DBBB6A /* FavouritePlaces */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EB99A1A229CC37B500DBBB6A /* Build configuration list for PBXNativeTarget "ChecklistM1" */;
+			buildConfigurationList = EB99A1A229CC37B500DBBB6A /* Build configuration list for PBXNativeTarget "FavouritePlaces" */;
 			buildPhases = (
 				EB99A17A29CC37B300DBBB6A /* Sources */,
 				EB99A17B29CC37B300DBBB6A /* Frameworks */,
@@ -153,14 +153,14 @@
 			);
 			dependencies = (
 			);
-			name = ChecklistM1;
+			name = FavouritePlaces;
 			productName = ChecklistM1;
-			productReference = EB99A17E29CC37B300DBBB6A /* ChecklistM1.app */;
+			productReference = EB99A17E29CC37B300DBBB6A /* FavouritePlaces.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EB99A18D29CC37B500DBBB6A /* ChecklistM1Tests */ = {
+		EB99A18D29CC37B500DBBB6A /* FavouritePlacesTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EB99A1A529CC37B500DBBB6A /* Build configuration list for PBXNativeTarget "ChecklistM1Tests" */;
+			buildConfigurationList = EB99A1A529CC37B500DBBB6A /* Build configuration list for PBXNativeTarget "FavouritePlacesTests" */;
 			buildPhases = (
 				EB99A18A29CC37B500DBBB6A /* Sources */,
 				EB99A18B29CC37B500DBBB6A /* Frameworks */,
@@ -171,14 +171,14 @@
 			dependencies = (
 				EB99A19029CC37B500DBBB6A /* PBXTargetDependency */,
 			);
-			name = ChecklistM1Tests;
+			name = FavouritePlacesTests;
 			productName = ChecklistM1Tests;
-			productReference = EB99A18E29CC37B500DBBB6A /* ChecklistM1Tests.xctest */;
+			productReference = EB99A18E29CC37B500DBBB6A /* FavouritePlacesTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		EB99A19729CC37B500DBBB6A /* ChecklistM1UITests */ = {
+		EB99A19729CC37B500DBBB6A /* FavouritePlacesUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EB99A1A829CC37B500DBBB6A /* Build configuration list for PBXNativeTarget "ChecklistM1UITests" */;
+			buildConfigurationList = EB99A1A829CC37B500DBBB6A /* Build configuration list for PBXNativeTarget "FavouritePlacesUITests" */;
 			buildPhases = (
 				EB99A19429CC37B500DBBB6A /* Sources */,
 				EB99A19529CC37B500DBBB6A /* Frameworks */,
@@ -189,9 +189,9 @@
 			dependencies = (
 				EB99A19A29CC37B500DBBB6A /* PBXTargetDependency */,
 			);
-			name = ChecklistM1UITests;
+			name = FavouritePlacesUITests;
 			productName = ChecklistM1UITests;
-			productReference = EB99A19829CC37B500DBBB6A /* ChecklistM1UITests.xctest */;
+			productReference = EB99A19829CC37B500DBBB6A /* FavouritePlacesUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -217,7 +217,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EB99A17929CC37B300DBBB6A /* Build configuration list for PBXProject "ChecklistM1" */;
+			buildConfigurationList = EB99A17929CC37B300DBBB6A /* Build configuration list for PBXProject "FavouritePlaces" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -230,9 +230,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EB99A17D29CC37B300DBBB6A /* ChecklistM1 */,
-				EB99A18D29CC37B500DBBB6A /* ChecklistM1Tests */,
-				EB99A19729CC37B500DBBB6A /* ChecklistM1UITests */,
+				EB99A17D29CC37B300DBBB6A /* FavouritePlaces */,
+				EB99A18D29CC37B500DBBB6A /* FavouritePlacesTests */,
+				EB99A19729CC37B500DBBB6A /* FavouritePlacesUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -269,7 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB99A18429CC37B300DBBB6A /* ContentView.swift in Sources */,
-				EB99A18229CC37B300DBBB6A /* ChecklistM1App.swift in Sources */,
+				EB99A18229CC37B300DBBB6A /* FavouritePlaces.swift in Sources */,
 				EB0451FC29D6C2000058C7C4 /* EditView.swift in Sources */,
 				EB42119429DC48FE008470CB /* ItemView.swift in Sources */,
 				EB0451F629D6A7C80058C7C4 /* DataModel.swift in Sources */,
@@ -280,7 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB99A19329CC37B500DBBB6A /* ChecklistM1Tests.swift in Sources */,
+				EB99A19329CC37B500DBBB6A /* FavouritePlacesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,8 +288,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB99A19D29CC37B500DBBB6A /* ChecklistM1UITests.swift in Sources */,
-				EB99A19F29CC37B500DBBB6A /* ChecklistM1UITestsLaunchTests.swift in Sources */,
+				EB99A19D29CC37B500DBBB6A /* FavouritePlacesTests.swift in Sources */,
+				EB99A19F29CC37B500DBBB6A /* FavouritePlacesUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,12 +298,12 @@
 /* Begin PBXTargetDependency section */
 		EB99A19029CC37B500DBBB6A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EB99A17D29CC37B300DBBB6A /* ChecklistM1 */;
+			target = EB99A17D29CC37B300DBBB6A /* FavouritePlaces */;
 			targetProxy = EB99A18F29CC37B500DBBB6A /* PBXContainerItemProxy */;
 		};
 		EB99A19A29CC37B500DBBB6A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EB99A17D29CC37B300DBBB6A /* ChecklistM1 */;
+			target = EB99A17D29CC37B300DBBB6A /* FavouritePlaces */;
 			targetProxy = EB99A19929CC37B500DBBB6A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -430,7 +430,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ChecklistM1/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"FavouritePlaces/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -458,7 +458,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"ChecklistM1/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"FavouritePlaces/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -494,7 +494,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChecklistM1.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChecklistM1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FavouritePlaces.FavouritePlacespp/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FavouritePlaces";
 			};
 			name = Debug;
 		};
@@ -513,7 +513,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ChecklistM1.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/ChecklistM1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FavouritePlaces.FavouritePlacespp/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FavouritePlaces";
 			};
 			name = Release;
 		};
@@ -554,7 +554,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EB99A17929CC37B300DBBB6A /* Build configuration list for PBXProject "ChecklistM1" */ = {
+		EB99A17929CC37B300DBBB6A /* Build configuration list for PBXProject "FavouritePlaces" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB99A1A029CC37B500DBBB6A /* Debug */,
@@ -563,7 +563,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EB99A1A229CC37B500DBBB6A /* Build configuration list for PBXNativeTarget "ChecklistM1" */ = {
+		EB99A1A229CC37B500DBBB6A /* Build configuration list for PBXNativeTarget "FavouritePlaces" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB99A1A329CC37B500DBBB6A /* Debug */,
@@ -572,7 +572,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EB99A1A529CC37B500DBBB6A /* Build configuration list for PBXNativeTarget "ChecklistM1Tests" */ = {
+		EB99A1A529CC37B500DBBB6A /* Build configuration list for PBXNativeTarget "FavouritePlacesTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB99A1A629CC37B500DBBB6A /* Debug */,
@@ -581,7 +581,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EB99A1A829CC37B500DBBB6A /* Build configuration list for PBXNativeTarget "ChecklistM1UITests" */ = {
+		EB99A1A829CC37B500DBBB6A /* Build configuration list for PBXNativeTarget "FavouritePlacesUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EB99A1A929CC37B500DBBB6A /* Debug */,

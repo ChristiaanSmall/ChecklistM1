@@ -11,7 +11,10 @@ import Foundation
 /// It conforms to Hashable and Codable protocols for encoding and decoding
 struct AppData: Hashable, Codable {
     var list: String
-    var listDet: [[String]]
+    var url: String
+    var description: String
+    var longitude: String
+    var latitude: String
 }
 
 /// DataModel is a class that conforms to the ObservableObject protocol. It holds an array of AppData objects and provides methods for adding, deleting, and updating these objects. It also includes a method to load the data from a JSON file and save the data to the same file when changes are made.
@@ -59,6 +62,6 @@ func getFile() -> URL? {
 
 /// Define some fake data for initial testing or fallback
 var fakeData = [
-    AppData(list: "To Do", listDet: [["Do Work", "circle"],["Do Nothing", "checkmark.circle.fill"]]),
-    AppData(list: "Cool List", listDet: [["Do Work", "circle"]])
+    AppData(list: "Siq List", url: "https://www.searchenginejournal.com/wp-content/uploads/2022/06/image-search-1600-x-840-px-62c6dc4ff1eee-sej.png", description: "bruh", longitude: "0", latitude: "0"),
+    AppData(list: "Siq List", url: "www.google.com", description: "sah dude", longitude: "0", latitude: "0"),
 ]
