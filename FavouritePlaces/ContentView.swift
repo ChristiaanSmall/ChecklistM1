@@ -40,7 +40,7 @@ struct ContentView: View {
                             Text(model.tasks[index].list)
                         }
                     }
-                    // Enable deletion of tasks from the list.
+                    // Enable deletion of tasks from the list
                     .onDelete { idx in
                         model.tasks.remove(atOffsets: idx)
                         model.save()
