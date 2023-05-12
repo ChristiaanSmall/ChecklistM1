@@ -8,6 +8,8 @@
 import SwiftUI
 import CoreData
 import MapKit
+import CoreLocation
+
 
 struct ItemView: View {
     @Binding var list: DataModel
@@ -19,6 +21,12 @@ struct ItemView: View {
     @State var longitude: Double = 0.0
     @State var latitude: Double = 0.0
     @State var region: MKCoordinateRegion = MKCoordinateRegion()
+    
+    let decimalFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        return formatter
+    }()
 
     var body: some View {
         VStack {
@@ -32,8 +40,9 @@ struct ItemView: View {
                 TextField("Name:", text: $listName)
                 TextField("URL:", text: $url)
                 TextField("Description:", text: $description)
-                TextField("Longitude:", value: $longitude, formatter: NumberFormatter())
-                TextField("Latitude:", value: $latitude, formatter: NumberFormatter())
+                TextField("Longitude:", value: $longitude, formatter: decimalFormatter)
+                TextField("Latitude:", value: $latitude, formatter: decimalFormatter)
+
                 
                 Button(action: {
                     region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
