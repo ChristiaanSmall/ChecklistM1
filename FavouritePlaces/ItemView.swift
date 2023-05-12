@@ -7,9 +7,8 @@
 
 import SwiftUI
 import CoreData
-import MapKit
 import CoreLocation
-
+import MapKit
 
 struct ItemView: View {
     @Binding var list: DataModel
@@ -42,17 +41,16 @@ struct ItemView: View {
                 TextField("Description:", text: $description)
                 TextField("Longitude:", value: $longitude, formatter: decimalFormatter)
                 TextField("Latitude:", value: $latitude, formatter: decimalFormatter)
-
-                
-                Button(action: {
-                    region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
-                }) {
-                    Text("Update Map")
-                }
                 
                 Map(coordinateRegion: $region)
                     .frame(height: 300)
             }
+        }
+        .onChange(of: longitude) { newValue in
+            updateMapRegion()
+        }
+        .onChange(of: latitude) { newValue in
+            updateMapRegion()
         }
         .navigationTitle("\(listName)")
         .navigationBarItems(
@@ -64,7 +62,7 @@ struct ItemView: View {
             description = list.tasks[count].description
             longitude = list.tasks[count].longitude
             latitude = list.tasks[count].latitude
-            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+            updateMapRegion()
         }
         .onDisappear {
             list.tasks[count].list = listName
@@ -74,5 +72,9 @@ struct ItemView: View {
             list.tasks[count].latitude = latitude
             list.save()
         }
+    }
+
+    private func updateMapRegion() {
+        region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
     }
 }

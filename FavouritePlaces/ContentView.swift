@@ -20,11 +20,10 @@ struct ContentView: View {
                 List {
                     ForEach(model.tasks.indices, id: \.self) { index in
                         NavigationLink(destination: ItemView(list: $model, count: index)) {
-                            if let imageUrl = URL(string: model.tasks[index].url), let imageData = try? Data(contentsOf: imageUrl), let uiImage = UIImage(data: imageData) {
-                                Image(uiImage: uiImage)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 40, height: 40)
+
+                            if let imageUrl = URL(string: model.tasks[index].url) {
+                                ImageView(url: imageUrl)
+                                    .frame(width: 40, height: 40) // Setting the frame size
                             }
                             Text(model.tasks[index].list)
                         }
