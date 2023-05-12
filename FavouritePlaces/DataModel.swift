@@ -58,6 +58,6 @@ func getFile() -> URL? {
 
 /// Define some fake data for initial testing or fallback
 var fakeData = [
-    AppData(list: "Siq List", url: "https://www.searchenginejournal.com/wp-content/uploads/2022/06/image-search-1600-x-840-px-62c6dc4ff1eee-sej.png", description: "bruh", longitude: "0", latitude: "0"),
-    AppData(list: "Siq List", url: "www.google.com", description: "sah dude", longitude: "0", latitude: "0"),
+    AppData(list: "Siq List", url: "https://www.searchenginejournal.com/wp-content/uploads/2022/06/image-search-1600-x-840-px-62c6dc4ff1eee-sej.png", description: "bruh", longitude: -27.470030, latitude: -27.470030),
+    AppData(list: "Siq List", url: "www.google.com", description: "sah dude", longitude: -27.470030, latitude: -27.470030),
 ]
