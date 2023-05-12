@@ -22,9 +22,9 @@ struct ItemView: View {
     /// The original list details before any changes were made
     @State var description: String = ""
     /// The current list details being edited
-    @State var longitude: String = ""
+    @State var longitude: Double = 0
     /// The state of the reset button (true if reset has been applied, false otherwise)
-    @State var latitude: String = ""
+    @State var latitude: Double = 0
 
     var body: some View {
         VStack {

@@ -12,8 +12,8 @@ struct AppData: Hashable, Codable {
     var list: String
     var url: String
     var description: String
-    var longitude: String
-    var latitude: String
+    var longitude: Double
+    var latitude: Double
 }
 
 struct DataModel: Codable {
