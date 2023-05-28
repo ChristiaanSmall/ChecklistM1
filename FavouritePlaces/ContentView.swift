@@ -34,7 +34,9 @@ struct ContentView: View {
                     .onDelete { idx in
                         model.tasks.remove(atOffsets: idx)
                         model.save()
+                        selectedItemIndex = nil // Add this line to reset the selectedItemIndex
                     }
+
                     .onMove { source, destination in
                         model.tasks.move(fromOffsets: source, toOffset: destination)
                         model.save()

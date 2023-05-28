@@ -22,7 +22,7 @@ struct ItemView: View {
     @State private var displayedLocationName: String = ""
     @Binding var selectedItemIndex: Int?
     
-    // Sunset and sunrise properties
+    // Sunrise and sunset properties
     @State private var sunrise: String = ""
     @State private var sunset: String = ""
     @State private var isLoadingSunData = false
@@ -42,7 +42,8 @@ struct ItemView: View {
                     ImageView(url: imageUrl)
                 }
                 TextField("Description:", text: $description)
-                
+                TextField("URL:", text: $url)
+
                 HStack {
                     Text("Location:")
                         .font(.headline)
@@ -51,30 +52,6 @@ struct ItemView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 .padding(.vertical, 8)
-                
-                HStack {
-                    Text("Sunrise:")
-                        .font(.headline)
-                    
-                    if isLoadingSunData {
-                        ProgressView()
-                    } else {
-                        Text(sunrise)
-                    }
-                }
-                .padding(.vertical, 4)
-                
-                HStack {
-                    Text("Sunset:")
-                        .font(.headline)
-                    
-                    if isLoadingSunData {
-                        ProgressView()
-                    } else {
-                        Text(sunset)
-                    }
-                }
-                .padding(.vertical, 4)
                 
                 NavigationLink(destination: FullLocationView(list: $list, selectedItemIndex: $selectedItemIndex, count: count), tag: count, selection: $selectedItemIndex) {
                     HStack {
@@ -89,7 +66,33 @@ struct ItemView: View {
                     }
                 }
                 .padding(.vertical, 8)
+                
+                HStack {
+                    VStack {
+                        Image(systemName: "sunrise.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.orange)
+                        
+                        Text(sunset)
+                    }
+                    .padding(.horizontal, 20)
+                    
+                    Spacer()
+                    
+                    VStack {
+                        Image(systemName: "sunset.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.purple)
+                        
+                        Text(sunrise)
+                    }
+                    .padding(.horizontal, 20)
+                }
+                .padding(.vertical, 8)
             }
+            .listStyle(InsetGroupedListStyle()) // Optional: Apply an inset style to the list
         }
         .onChange(of: longitude) { newValue in
             updateMapRegion()
@@ -104,9 +107,6 @@ struct ItemView: View {
             trailing: EditButton()
         )
         .onAppear {
-            getLocationName(for: latitude, longitude: longitude) { name in
-                displayedLocationName = name ?? ""
-            }
             listName = list.tasks[count].list
             url = list.tasks[count].url
             description = list.tasks[count].description
