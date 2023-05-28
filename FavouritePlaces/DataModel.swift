@@ -59,6 +59,19 @@ func getLocationCoordinates(for locationName: String, completion: @escaping (CLL
         completion(coordinates)
     }
 }
+func getLocationName(for latitude: Double, longitude: Double, completion: @escaping (String?) -> Void) {
+    let location = CLLocation(latitude: latitude, longitude: longitude)
+    let geocoder = CLGeocoder()
+    geocoder.reverseGeocodeLocation(location) { placemarks, error in
+        guard let placemark = placemarks?.first,
+              let name = placemark.name else {
+            completion(nil)
+            return
+        }
+        
+        completion(name)
+    }
+}
 
 /// Helper function to get the file URL for storing data
 func getFile() -> URL? {

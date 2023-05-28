@@ -19,18 +19,18 @@ struct ItemView: View {
     @State var longitude: Double = 0.0
     @State var latitude: Double = 0.0
     @State var region: MKCoordinateRegion = MKCoordinateRegion()
-    
-    
+    @State private var displayedLocationName: String = ""
+
     let decimalFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         return formatter
     }()
-
+    
     var body: some View {
         VStack {
             EditView(title: $listName)
-
+            
             List {
                 if let imageUrl = URL(string: url) {
                     ImageView(url: imageUrl)
@@ -56,10 +56,12 @@ struct ItemView: View {
                         updateMapRegion()
                     }
                 }
-
-
-                Map(coordinateRegion: $region)
+                Text("Location: \(displayedLocationName)")
+                    .font(.headline)
+                
+                Map(coordinateRegion: .constant(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))))
                     .frame(height: 300)
+
                 
             }
         }
@@ -74,6 +76,9 @@ struct ItemView: View {
             trailing: EditButton()
         )
         .onAppear {
+            getLocationName(for: latitude, longitude: longitude) { name in
+                displayedLocationName = name ?? ""
+            }
             listName = list.tasks[count].list
             url = list.tasks[count].url
             description = list.tasks[count].description
@@ -90,8 +95,13 @@ struct ItemView: View {
             list.save()
         }
     }
-
+    
     private func updateMapRegion() {
-        region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        getLocationName(for: latitude, longitude: longitude) { name in
+            displayedLocationName = name ?? ""
+        }
     }
+
+
+
 }
