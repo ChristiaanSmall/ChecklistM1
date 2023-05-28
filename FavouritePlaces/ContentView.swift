@@ -1,31 +1,24 @@
-//
-//  ContentView.swift
-//  ChecklistM1
-//
-//  Created by Christiaan Small on 23/3/2023.
-//
-
 import SwiftUI
 
 struct ContentView: View {
-    
     @Binding var model: DataModel
     @State var myTitle = "MyList"
+    @State private var selectedLocation: AppData?
 
     var body: some View {
         NavigationView() {
             VStack {
                 EditView(title: $myTitle)
-                
+
                 List {
                     ForEach(model.tasks.indices, id: \.self) { index in
-                        NavigationLink(destination: ItemView(list: $model, count: index)) {
-
-                            if let imageUrl = URL(string: model.tasks[index].url) {
+                        NavigationLink(destination: ItemView(list: $model, count: index, selectedLocation: $selectedLocation)) {
+                            let location = model.tasks[index]
+                            if let imageUrl = URL(string: location.url) {
                                 ImageView(url: imageUrl)
                                     .frame(width: 40, height: 40) // Setting the frame size
                             }
-                            Text(model.tasks[index].list)
+                            Text(location.list)
                         }
                     }
                     .onDelete { idx in
@@ -40,7 +33,7 @@ struct ContentView: View {
                 .navigationTitle(myTitle)
                 .navigationBarItems(
                     leading: EditButton(),
-                    trailing: Button("+"){
+                    trailing: Button("+") {
                         model.tasks.append(AppData(list: "Siq List", url: "", description: "bruh", longitude: 0.0, latitude: 0.0))
                         model.save()
                     }
@@ -48,5 +41,8 @@ struct ContentView: View {
             }
         }
         .padding()
+        .sheet(item: $selectedLocation) { location in
+            LocationDetailView(location: location, model: $model)
+        }
     }
 }

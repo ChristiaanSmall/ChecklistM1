@@ -1,26 +1,16 @@
-//
-//  ItemView.swift
-//  ChecklistM1
-//
-//  Created by Christiaan Small on 4/4/2023.
-//
-
 import SwiftUI
-import CoreData
-import CoreLocation
-import MapKit
 
 struct ItemView: View {
     @Binding var list: DataModel
     var count: Int
+    @Binding var selectedLocation: AppData?
 
-    @State var listName: String = ""
-    @State var url: String = ""
-    @State var description: String = ""
-    @State var longitude: Double = 0.0
-    @State var latitude: Double = 0.0
-    @State var region: MKCoordinateRegion = MKCoordinateRegion()
-    
+    @State private var listName: String = ""
+    @State private var url: String = ""
+    @State private var description: String = ""
+    @State private var longitude: Double = 0.0
+    @State private var latitude: Double = 0.0
+
     let decimalFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -35,46 +25,60 @@ struct ItemView: View {
                 if let imageUrl = URL(string: url) {
                     ImageView(url: imageUrl)
                 }
-                
+
                 TextField("Name:", text: $listName)
                 TextField("URL:", text: $url)
                 TextField("Description:", text: $description)
                 TextField("Longitude:", value: $longitude, formatter: decimalFormatter)
                 TextField("Latitude:", value: $latitude, formatter: decimalFormatter)
-                
-                Map(coordinateRegion: $region)
-                    .frame(height: 300)
             }
-        }
-        .onChange(of: longitude) { newValue in
-            updateMapRegion()
-        }
-        .onChange(of: latitude) { newValue in
-            updateMapRegion()
-        }
-        .navigationTitle("\(listName)")
-        .navigationBarItems(
-            trailing: EditButton()
-        )
-        .onAppear {
-            listName = list.tasks[count].list
-            url = list.tasks[count].url
-            description = list.tasks[count].description
-            longitude = list.tasks[count].longitude
-            latitude = list.tasks[count].latitude
-            updateMapRegion()
-        }
-        .onDisappear {
-            list.tasks[count].list = listName
-            list.tasks[count].url = url
-            list.tasks[count].description = description
-            list.tasks[count].longitude = longitude
-            list.tasks[count].latitude = latitude
-            list.save()
+            .onChange(of: longitude) { newValue in
+                updateLocation()
+            }
+            .onChange(of: latitude) { newValue in
+                updateLocation()
+            }
+            .navigationTitle("\(listName)")
+            .navigationBarItems(
+                trailing: EditButton()
+            )
+            .onAppear {
+                let currentLocation = list.tasks[count]
+                listName = currentLocation.list
+                url = currentLocation.url
+                description = currentLocation.description
+                longitude = currentLocation.longitude
+                latitude = currentLocation.latitude
+            }
+            .onDisappear {
+                let updatedLocation = AppData(
+                    id: list.tasks[count].id,
+                    list: listName,
+                    url: url,
+                    description: description,
+                    longitude: longitude,
+                    latitude: latitude
+                )
+                list.tasks[count] = updatedLocation
+                list.save()
+            }
+            .onTapGesture {
+                selectedLocation = list.tasks[count]
+            }
         }
     }
 
-    private func updateMapRegion() {
-        region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+    private func updateLocation() {
+        if let index = list.tasks.firstIndex(where: { $0.id == list.tasks[count].id }) {
+            let updatedLocation = AppData(
+                id: list.tasks[count].id,
+                list: listName,
+                url: url,
+                description: description,
+                longitude: longitude,
+                latitude: latitude
+            )
+            list.tasks[index] = updatedLocation
+        }
     }
 }

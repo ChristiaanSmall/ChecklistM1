@@ -8,13 +8,16 @@
 import Foundation
 
 /// Define a struct `AppData` to represent the data for each list item
-struct AppData: Hashable, Codable {
+struct AppData: Identifiable, Hashable, Codable {
+    var id = UUID() // Add the id property
+
     var list: String
     var url: String
     var description: String
     var longitude: Double
     var latitude: Double
 }
+
 
 struct DataModel: Codable {
     var tasks: [AppData] // Array to hold the list of tasks
