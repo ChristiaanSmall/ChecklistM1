@@ -20,7 +20,13 @@ struct ItemView: View {
     @State var latitude: Double = 0.0
     @State var region: MKCoordinateRegion = MKCoordinateRegion()
     @State private var displayedLocationName: String = ""
-
+    @Binding var selectedItemIndex: Int?
+    
+    // Sunset and sunrise properties
+    @State private var sunrise: String = ""
+    @State private var sunset: String = ""
+    @State private var isLoadingSunData = false
+    
     let decimalFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -35,41 +41,63 @@ struct ItemView: View {
                 if let imageUrl = URL(string: url) {
                     ImageView(url: imageUrl)
                 }
-                
-                TextField("Name:", text: $listName)
-                TextField("URL:", text: $url)
                 TextField("Description:", text: $description)
-                TextField("Longitude:", value: $longitude, formatter: decimalFormatter)
-                TextField("Latitude:", value: $latitude, formatter: decimalFormatter)
-                Button("Get Coordinates") {
-                    getLocationCoordinates(for: listName) { coordinates in
-                        guard let coordinates = coordinates else {
-                            // Handle case when coordinates are not found for the given location name
-                            return
-                        }
-                        
-                        // Update the latitude and longitude properties with the retrieved coordinates
-                        latitude = coordinates.latitude
-                        longitude = coordinates.longitude
-                        
-                        // Update the map region to reflect the new coordinates
-                        updateMapRegion()
+                
+                HStack {
+                    Text("Location:")
+                        .font(.headline)
+                    
+                    Text(displayedLocationName)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                .padding(.vertical, 8)
+                
+                HStack {
+                    Text("Sunrise:")
+                        .font(.headline)
+                    
+                    if isLoadingSunData {
+                        ProgressView()
+                    } else {
+                        Text(sunrise)
                     }
                 }
-                Text("Location: \(displayedLocationName)")
-                    .font(.headline)
+                .padding(.vertical, 4)
                 
-                Map(coordinateRegion: .constant(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))))
-                    .frame(height: 300)
-
+                HStack {
+                    Text("Sunset:")
+                        .font(.headline)
+                    
+                    if isLoadingSunData {
+                        ProgressView()
+                    } else {
+                        Text(sunset)
+                    }
+                }
+                .padding(.vertical, 4)
                 
+                NavigationLink(destination: FullLocationView(list: $list, selectedItemIndex: $selectedItemIndex, count: count), tag: count, selection: $selectedItemIndex) {
+                    HStack {
+                        Text("View Full Location Information")
+                            .font(.headline)
+                            .foregroundColor(.blue)
+                            .padding(.trailing, 8)
+                        
+                        Map(coordinateRegion: .constant(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))))
+                            .frame(width: 50, height: 50)
+                            .cornerRadius(8)
+                    }
+                }
+                .padding(.vertical, 8)
             }
         }
         .onChange(of: longitude) { newValue in
             updateMapRegion()
+            fetchSunData()
         }
         .onChange(of: latitude) { newValue in
             updateMapRegion()
+            fetchSunData()
         }
         .navigationTitle("\(listName)")
         .navigationBarItems(
@@ -85,6 +113,7 @@ struct ItemView: View {
             longitude = list.tasks[count].longitude
             latitude = list.tasks[count].latitude
             updateMapRegion()
+            fetchSunData()
         }
         .onDisappear {
             list.tasks[count].list = listName
@@ -101,7 +130,46 @@ struct ItemView: View {
             displayedLocationName = name ?? ""
         }
     }
+    
+    private func fetchSunData() {
+        isLoadingSunData = true
+        
+        let urlStr = "https://api.sunrisesunset.io/json?lat=\(latitude)&lng=\(longitude)&timezone=UTC"
+        
+        guard let url = URL(string: urlStr) else {
+            isLoadingSunData = false
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            defer {
+                isLoadingSunData = false
+            }
+            
+            if let error = error {
+                print("Error fetching sunrise and sunset data: \(error.localizedDescription)")
+                return
+            }
+            
+            if let data = data {
+                do {
+                    let decoder = JSONDecoder()
+                    let response = try decoder.decode(SunDataResponse.self, from: data)
+                    sunrise = response.results.sunrise
+                    sunset = response.results.sunset
+                } catch {
+                    print("Error decoding sunrise and sunset data: \(error.localizedDescription)")
+                }
+            }
+        }.resume()
+    }
+}
 
+struct SunDataResponse: Codable {
+    let results: SunData
+}
 
-
+struct SunData: Codable {
+    let sunrise: String
+    let sunset: String
 }

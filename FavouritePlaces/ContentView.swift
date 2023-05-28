@@ -6,26 +6,29 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ContentView: View {
-    
     @Binding var model: DataModel
     @State var myTitle = "MyList"
+    @State private var selectedItemIndex: Int?
 
     var body: some View {
-        NavigationView() {
+        NavigationView {
             VStack {
                 EditView(title: $myTitle)
                 
                 List {
                     ForEach(model.tasks.indices, id: \.self) { index in
-                        NavigationLink(destination: ItemView(list: $model, count: index)) {
-
-                            if let imageUrl = URL(string: model.tasks[index].url) {
-                                ImageView(url: imageUrl)
-                                    .frame(width: 40, height: 40) // Setting the frame size
+                        NavigationLink(destination: ItemView(list: $model, count: index, selectedItemIndex: $selectedItemIndex)) {
+                            VStack(alignment: .leading) {
+                                if let imageUrl = URL(string: model.tasks[index].url) {
+                                    ImageView(url: imageUrl)
+                                        .frame(width: 40, height: 40)
+                                }
+                                Text(model.tasks[index].list)
+                                    .font(.headline)
                             }
-                            Text(model.tasks[index].list)
                         }
                     }
                     .onDelete { idx in
@@ -40,7 +43,7 @@ struct ContentView: View {
                 .navigationTitle(myTitle)
                 .navigationBarItems(
                     leading: EditButton(),
-                    trailing: Button("+"){
+                    trailing: Button("+") {
                         model.tasks.append(AppData(list: "Siq List", url: "", description: "bruh", longitude: 0.0, latitude: 0.0))
                         model.save()
                     }
