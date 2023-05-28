@@ -1,6 +1,6 @@
 //
-//  ChecklistM1App.swift
-//  ChecklistM1
+//  FavouritePlaces.swift
+//  FavouritePlaces
 //
 //  Created by Christiaan Small on 23/3/2023.
 //

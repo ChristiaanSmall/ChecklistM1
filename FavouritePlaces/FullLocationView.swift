@@ -1,5 +1,5 @@
 //
-//  MapCoordinator.swift
+//  FullLocationView.swift
 //  FavouritePlaces
 //
 //  Created by Christiaan on 28/5/2023.
@@ -8,34 +8,47 @@
 import SwiftUI
 import MapKit
 
+/// A view for displaying and editing a full location.
 struct FullLocationView: View {
     @Binding var list: DataModel
     @Binding var selectedItemIndex: Int?
-
+    
     var count: Int
     
+    // State variables to track changes made by the user
     @State private var editedTitle: String = ""
     @State private var editedListName: String = ""
     @State private var editedLatitude: Double = 0.0
     @State private var editedLongitude: Double = 0.0
     
+    // State variables for displaying location information
     @State private var displayedLocationName: String = ""
     @State private var isEditing: Bool = false
     
+    // Number formatter for decimal values
     private let decimalFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
         return formatter
     }()
     
+    // Default coordinate region
     private let defaultCoordinateRegion = MKCoordinateRegion()
+    
+    // State variable to wrap the coordinate region
     @State private var coordinateRegionWrapper: CoordinateRegionWrapper
     
+    /// Initializes a new FullLocationView with the given parameters.
+    /// - Parameters:
+    ///   - list: The binding to the data model.
+    ///   - selectedItemIndex: The binding to the index of the selected item.
+    ///   - count: The count of the item.
     init(list: Binding<DataModel>, selectedItemIndex: Binding<Int?>, count: Int) {
         _list = list
         _selectedItemIndex = selectedItemIndex
         self.count = count
         
+        // Initialize state variables with the values from the selected item
         let item = list.wrappedValue.tasks[count]
         _editedTitle = State(initialValue: item.list)
         _editedListName = State(initialValue: item.list)
@@ -43,6 +56,7 @@ struct FullLocationView: View {
         _editedLongitude = State(initialValue: item.longitude)
         _coordinateRegionWrapper = State(initialValue: CoordinateRegionWrapper(region: defaultCoordinateRegion))
         
+        // Create a coordinate region based on the latitude and longitude
         let center = CLLocationCoordinate2D(latitude: item.latitude, longitude: item.longitude)
         let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
         let region = MKCoordinateRegion(center: center, span: span)
@@ -78,17 +92,20 @@ struct FullLocationView: View {
             Map(coordinateRegion: $coordinateRegionWrapper.region)
                 .frame(height: 300)
                 .onAppear {
+                    // Update the displayed location name when the view appears
                     getLocationName(for: editedLatitude, longitude: editedLongitude) { name in
                         displayedLocationName = name ?? ""
                     }
                 }
                 .onChange(of: coordinateRegionWrapper) { wrapper in
+                    // Update the edited latitude and longitude when the map region changes
                     editedLatitude = wrapper.region.center.latitude
                     editedLongitude = wrapper.region.center.longitude
                 }
         }
         .navigationBarItems(trailing: editButton)
         .onAppear {
+            // Update the displayed location name when the view appears
             getLocationName(for: editedLatitude, longitude: editedLongitude) { name in
                 displayedLocationName = name ?? ""
             }
@@ -138,6 +155,7 @@ struct FullLocationView: View {
     }
 }
 
+/// A wrapper struct to make CoordinateRegion conform to the Equatable protocol.
 struct CoordinateRegionWrapper: Equatable {
     var region: MKCoordinateRegion
     

@@ -1,6 +1,6 @@
 //
 //  ItemView.swift
-//  ChecklistM1
+//  FavouritePlaces
 //
 //  Created by Christiaan Small on 4/4/2023.
 //
@@ -10,6 +10,7 @@ import CoreData
 import CoreLocation
 import MapKit
 
+/// ItemView is a detailed view for displaying and editing an individual item.
 struct ItemView: View {
     @Binding var list: DataModel
     var count: Int
@@ -107,6 +108,7 @@ struct ItemView: View {
             trailing: EditButton()
         )
         .onAppear {
+            // Set initial values from the data model
             listName = list.tasks[count].list
             url = list.tasks[count].url
             description = list.tasks[count].description
@@ -116,6 +118,7 @@ struct ItemView: View {
             fetchSunData()
         }
         .onDisappear {
+            // Save changes to the data model when the view disappears
             list.tasks[count].list = listName
             list.tasks[count].url = url
             list.tasks[count].description = description
@@ -125,12 +128,14 @@ struct ItemView: View {
         }
     }
     
+    /// Update the displayed location name based on the latitude and longitude coordinates.
     private func updateMapRegion() {
         getLocationName(for: latitude, longitude: longitude) { name in
             displayedLocationName = name ?? ""
         }
     }
     
+    /// Fetch sunrise and sunset data based on the latitude and longitude coordinates.
     private func fetchSunData() {
         isLoadingSunData = true
         
@@ -165,10 +170,12 @@ struct ItemView: View {
     }
 }
 
+/// A struct representing the sunrise and sunset data received from the API.
 struct SunDataResponse: Codable {
     let results: SunData
 }
 
+/// A struct representing the sunrise and sunset times.
 struct SunData: Codable {
     let sunrise: String
     let sunset: String

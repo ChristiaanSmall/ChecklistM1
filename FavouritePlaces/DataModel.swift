@@ -1,6 +1,6 @@
 //
 //  DataModel.swift
-//  ChecklistM1
+//  FavouritePlaces
 //
 //  Created by Christiaan Small on 31/3/2023.
 //

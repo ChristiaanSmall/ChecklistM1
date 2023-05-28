@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// ImageView is a view that displays an image loaded from a URL.
 struct ImageView: View {
     @State var uiImage: UIImage? = nil
     let url: URL
@@ -27,6 +28,7 @@ struct ImageView: View {
         }
     }
 
+    /// Fetches the image data from the provided URL.
     private func fetchImage() {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             if let data = data, let image = UIImage(data: data) {
