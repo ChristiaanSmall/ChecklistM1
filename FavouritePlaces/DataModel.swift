@@ -6,18 +6,16 @@
 //
 
 import Foundation
+import CoreLocation
 
 /// Define a struct `AppData` to represent the data for each list item
-struct AppData: Identifiable, Hashable, Codable {
-    var id = UUID() // Add the id property
-
+struct AppData: Hashable, Codable {
     var list: String
     var url: String
     var description: String
     var longitude: Double
     var latitude: Double
 }
-
 
 struct DataModel: Codable {
     var tasks: [AppData] // Array to hold the list of tasks
@@ -46,6 +44,19 @@ struct DataModel: Codable {
             return
         }
         try? data.write(to: url)
+    }
+}
+func getLocationCoordinates(for locationName: String, completion: @escaping (CLLocationCoordinate2D?) -> Void) {
+    let geocoder = CLGeocoder()
+    geocoder.geocodeAddressString(locationName) { placemarks, error in
+        guard let placemark = placemarks?.first,
+              let location = placemark.location else {
+            completion(nil)
+            return
+        }
+        
+        let coordinates = location.coordinate
+        completion(coordinates)
     }
 }
 

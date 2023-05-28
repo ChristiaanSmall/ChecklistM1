@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CE77CDF42A0DD54E0078A77D /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE77CDF32A0DD54E0078A77D /* ImageView.swift */; };
-		CE77CDF82A2317E80078A77D /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE77CDF72A2317E80078A77D /* LocationDetailView.swift */; };
 		EB0451F629D6A7C80058C7C4 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0451F529D6A7C80058C7C4 /* DataModel.swift */; };
 		EB0451FC29D6C2000058C7C4 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0451FB29D6C2000058C7C4 /* EditView.swift */; };
 		EB42119429DC48FE008470CB /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB42119329DC48FE008470CB /* ItemView.swift */; };
@@ -40,7 +39,6 @@
 
 /* Begin PBXFileReference section */
 		CE77CDF32A0DD54E0078A77D /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
-		CE77CDF72A2317E80078A77D /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
 		EB0451F529D6A7C80058C7C4 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		EB0451FB29D6C2000058C7C4 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		EB42119329DC48FE008470CB /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 			isa = PBXGroup;
 			children = (
 				EB99A1AD29CC458700DBBB6A /* readme.md */,
-				CE77CDF72A2317E80078A77D /* LocationDetailView.swift */,
 				EB99A18129CC37B300DBBB6A /* FavouritePlaces.swift */,
 				EB0451F529D6A7C80058C7C4 /* DataModel.swift */,
 				EB99A18329CC37B300DBBB6A /* ContentView.swift */,
@@ -277,7 +274,6 @@
 				CE77CDF42A0DD54E0078A77D /* ImageView.swift in Sources */,
 				EB99A18429CC37B300DBBB6A /* ContentView.swift in Sources */,
 				EB99A18229CC37B300DBBB6A /* FavouritePlaces.swift in Sources */,
-				CE77CDF82A2317E80078A77D /* LocationDetailView.swift in Sources */,
 				EB0451FC29D6C2000058C7C4 /* EditView.swift in Sources */,
 				EB42119429DC48FE008470CB /* ItemView.swift in Sources */,
 				EB0451F629D6A7C80058C7C4 /* DataModel.swift in Sources */,
